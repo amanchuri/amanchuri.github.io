@@ -1555,6 +1555,9 @@
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
       });
+      document.querySelectorAll('header, section').forEach(el => {
+        el.classList.add('in-view');
+      });
     </script>
   </body>
 </html>
