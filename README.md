@@ -1,2 +1,1559 @@
-# amanchuri.github.io
-UrbanBloom
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrbanBloom | Sustainable Building Planner</title>
+    <style>
+      :root {
+        --forest: #2e7d32;
+        --leaf: #81c784;
+        --sprout: #a5d6a7;
+        --background: #f7fbf7;
+        --surface: #ffffff;
+        --surface-soft: #eef7ec;
+        --text: #1d2b23;
+        --muted: #576d5f;
+        --shadow: 0 22px 50px rgba(22, 47, 21, 0.08);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #f8fcf8 0%, #eef7ec 100%);
+      }
+
+      .page-shell {
+        overflow-x: hidden;
+        scroll-snap-type: y proximity;
+      }
+
+      .page-shell > header,
+      .page-shell > section {
+        scroll-snap-align: center;
+        transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+      }
+
+      .page-shell > header:not(.in-view),
+      .page-shell > section:not(.in-view) {
+        opacity: 0.72;
+        transform: scale(0.997);
+        filter: brightness(0.93);
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        align-items: center;
+        padding: 32px 28px 64px;
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.35), transparent 28%),
+          linear-gradient(180deg, rgba(46, 125, 50, 0.18), rgba(255, 255, 255, 0.05)),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop offset='0'%20stop-color='%232e7d32'/%3E%3Cstop offset='1'%20stop-color='%2381c784'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600'%20height='900'%20fill='%23182516'/%3E%3Cpath d='M0 700L160 620L250 660L340 600L430 650L520 590L610 650L700 600L780 640L880 600L980 640L1080 590L1180 620L1280 580L1400 620L1600 590V900H0Z' fill='%23394734'/%3E%3Cpath d='M1260 390H1380V650H1260Z' fill='%23384135'/%3E%3Cpath d='M1110 430H1210V720H1110Z' fill='%23314f38'/%3E%3Cpath d='M1000 490H1080V680H1000Z' fill='%233d5d47'/%3E%3Ccircle cx='1340' cy='180' r='28' fill='%23a5d6a7'/%3E%3Ccircle cx='1450' cy='120' r='18' fill='%23eaf7ed'/%3E%3Ccircle cx='150' cy='150' r='16' fill='%23eaf7ed'/%3E%3C/svg%3E") no-repeat center/cover;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 36%);
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+        color: transparent;
+        background: linear-gradient(90deg, #d8f7c6 0%, #b4ea92 40%, #8fca5f 70%, #639243 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+      }
+
+      .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #1f3a20 0%, #2e7d32 45%, #205423 100%);
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 18px 36px rgba(12, 48, 15, 0.28);
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: 0 22px 42px rgba(13, 55, 17, 0.34);
+      }
+
+      .hero-copy {
+        padding: 36px 0 0;
+        max-width: 940px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(4rem, 6vw, 5.8rem);
+        line-height: 1.02;
+        margin: 0 auto 24px;
+        max-width: 100%;
+        letter-spacing: 0.03em;
+        color: transparent;
+        background: linear-gradient(90deg, #d8f7c6 0%, #b4ea92 40%, #8fca5f 70%, #639243 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        text-shadow: 0 0 28px rgba(196, 250, 176, 0.28);
+      }
+
+      .hero-copy p {
+        font-size: 1.1rem;
+        max-width: 720px;
+        color: rgba(255, 255, 255, 0.92);
+        margin: 0 0 28px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 24px;
+        cursor: pointer;
+        transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--leaf), var(--forest));
+        color: white;
+        box-shadow: 0 18px 32px rgba(46, 125, 50, 0.28);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.18);
+        color: white;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-chips {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .chip {
+        border-radius: 999px;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.13);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 0.96rem;
+      }
+
+      .section {
+        min-height: 92vh;
+        display: grid;
+        align-items: center;
+        padding: 72px 28px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 42px;
+      }
+
+      .section.in-view {
+        opacity: 1;
+        transform: scale(1.03);
+        filter: brightness(1.03);
+      }
+      .section.in-view .section-header h2 {
+        transform: scale(1.08);
+      }
+      .section.in-view .section-header p {
+        transform: scale(1.04);
+      }
+      .section.in-view .feature-card,
+      .section.in-view .stat-card,
+      .section.in-view .support-card,
+      .section.in-view .faq-card {
+        transform: translateY(-6px) scale(1.04);
+      }
+
+      .section-header h2,
+      .hero-copy h1,
+      .panel-header span,
+      .feature-card h3,
+      .stat-card h3,
+      .support-card h3,
+      .faq-card h4,
+      .recommendation-card h4 {
+        letter-spacing: -0.02em;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2.8rem, 4vw, 3.4rem);
+        line-height: 1.05;
+      }
+
+      .section-header p,
+      .feature-card p,
+      .stat-card p,
+      .support-card p,
+      .faq-card p {
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .feature-card h3,
+      .stat-card h3,
+      .support-card h3,
+      .faq-card h4 {
+        font-size: 1.35rem;
+      }
+
+      .recommendation-card {
+        position: relative;
+        border: 1px solid rgba(46, 125, 50, 0.14);
+        overflow: hidden;
+      }
+
+      .recommendation-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .recommendation-card h4 {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+
+      .recommendation-card p.scientific-name {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      .confidence-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 72px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(46, 125, 50, 0.12);
+        color: var(--forest);
+        font-weight: 700;
+      }
+
+      .plant-stats-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        margin-top: 12px;
+      }
+
+      .plant-stats-grid li {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: #f5fbf5;
+        border: 1px solid rgba(46, 125, 50, 0.08);
+      }
+
+      .recommendation-card ul.reasons {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: disc inside;
+        color: var(--muted);
+      }
+
+      .recommendation-card ul.reasons li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .details-toggle {
+        width: 100%;
+        margin-top: 18px;
+        border: none;
+        background: rgba(46, 125, 50, 0.1);
+        color: var(--forest);
+        border-radius: 999px;
+        padding: 12px 18px;
+        cursor: pointer;
+        transition: background-color 0.22s ease, transform 0.22s ease;
+      }
+
+      .details-toggle:hover {
+        background: rgba(46, 125, 50, 0.18);
+        transform: translateY(-1px);
+      }
+
+      .detail-panel {
+        margin-top: 14px;
+        padding: 18px 20px;
+        border-radius: 22px;
+        background: #f5f9f3;
+        border: 1px solid rgba(46, 125, 50, 0.08);
+        display: none;
+      }
+
+      .detail-panel.open {
+        display: block;
+      }
+
+      .feature-card,
+      .stat-card,
+      .support-card,
+      .faq-card,
+      .recommendation-card,
+      .summary-card,
+      .visualization-card,
+      .report-card,
+      .simulator-card {
+        transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+      }
+
+      .feature-card:hover,
+      .stat-card:hover,
+      .support-card:hover,
+      .faq-card:hover,
+      .recommendation-card:hover,
+      .summary-card:hover,
+      .visualization-card:hover,
+      .report-card:hover,
+      .simulator-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 26px 50px rgba(22, 47, 21, 0.12);
+        border-color: rgba(46, 125, 50, 0.18);
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 2.6vw, 3rem);
+        margin: 0;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        max-width: 740px;
+        margin: 16px auto 0;
+        line-height: 1.7;
+      }
+
+      .feature-grid,
+      .supported-grid,
+      .benefit-grid,
+      .faq-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .feature-card,
+      .stat-card,
+      .support-card,
+      .faq-card,
+      .recommendation-card,
+      .summary-card,
+      .visualization-card,
+      .panel-card,
+      .report-card,
+      .simulator-card {
+        background: var(--surface);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 34px;
+        min-height: 260px;
+      }
+
+      .feature-card {
+        min-height: 220px;
+      }
+
+      .feature-card .icon,
+      .stat-card .icon,
+      .support-card .icon {
+        display: none;
+      }
+
+      .feature-card h3,
+      .stat-card h3,
+      .support-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.15rem;
+      }
+
+      .feature-card p,
+      .support-card p,
+      .faq-card p,
+      .summary-card p,
+      .report-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .support-card {
+        display: grid;
+        gap: 14px;
+      }
+
+      .support-card small {
+        display: block;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .faq-card {
+        border: 1px solid rgba(46, 125, 50, 0.12);
+      }
+
+      .faq-card h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .planner-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 320px) 1.5fr minmax(280px, 320px);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .sidebar,
+      .info-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .sidebar h3,
+      .info-panel h3 {
+        margin: 0 0 8px;
+      }
+
+      .form-group {
+        display: grid;
+        gap: 10px;
+      }
+
+      .form-group label {
+        font-size: 0.95rem;
+        color: var(--text);
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(46, 125, 50, 0.18);
+        background: #ffffff;
+        color: var(--text);
+        padding: 14px 16px;
+      }
+
+      .form-group input::placeholder {
+        color: rgba(87, 109, 95, 0.55);
+      }
+
+      .sidebar .section-label,
+      .info-panel .section-label {
+        font-size: 0.92rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: stretch;
+      }
+
+      .panel-main {
+        display: grid;
+        gap: 24px;
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 22px 26px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: var(--shadow);
+      }
+
+      .panel-header span {
+        color: var(--forest);
+        font-weight: 700;
+      }
+
+      .recommendations {
+        display: grid;
+        gap: 22px;
+      }
+
+      .recommendation-card {
+        border: 1px solid rgba(46, 125, 50, 0.14);
+        border-radius: 28px;
+        padding: 28px;
+        background: #fbfdfa;
+        box-shadow: 0 20px 36px rgba(22, 47, 21, 0.08);
+      }
+
+      .recommendation-summary {
+        display: grid;
+        gap: 10px;
+      }
+
+      .recommendation-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 14px;
+      }
+
+      .recommendation-card h4 {
+        margin: 0 0 10px;
+      }
+
+      .recommendation-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .recommendation-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 16px 0 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .recommendation-card li {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .recommendation-card li span:last-child {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .metrics-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .metric-box {
+        padding: 20px;
+        border-radius: 24px;
+        background: #f5fbf5;
+        border: 1px solid rgba(46, 125, 50, 0.1);
+      }
+
+      .metric-box .label {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+      }
+
+      .metric-box .value {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--forest);
+      }
+
+      .stat-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .stat-list li {
+        display: grid;
+        gap: 6px;
+      }
+
+      .stat-list strong {
+        font-weight: 700;
+      }
+
+      .info-panel .summary-card {
+        padding: 24px;
+      }
+
+      .info-panel .summary-card h4 {
+        margin-top: 0;
+      }
+
+      .report-card pre {
+        margin: 16px 0 0;
+        white-space: pre-wrap;
+        background: #11221a;
+        color: #d8f0d4;
+        border-radius: 18px;
+        padding: 18px;
+        overflow-x: auto;
+      }
+
+      .simulator-card {
+        display: grid;
+        gap: 20px;
+      }
+
+      .range-group {
+        display: grid;
+        gap: 10px;
+      }
+
+      input[type='range'] {
+        width: 100%;
+        accent-color: var(--forest);
+      }
+
+      .output-box {
+        background: #f5fcf4;
+        border-radius: 20px;
+        padding: 18px;
+        border: 1px solid rgba(46, 125, 50, 0.12);
+      }
+
+      .output-box p {
+        margin: 0;
+        font-weight: 600;
+        color: var(--forest);
+      }
+
+      .footnote {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 16px;
+        text-align: center;
+      }
+
+      @media (max-width: 1120px) {
+        .planner-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          padding-top: 24px;
+        }
+
+        .nav {
+          justify-content: center;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .hero {
+          padding: 24px 18px 48px;
+        }
+
+        .section {
+          padding: 48px 18px;
+        }
+
+        .feature-grid,
+        .supported-grid,
+        .benefit-grid,
+        .faq-grid,
+        .recommendation-grid,
+        .metrics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy h1 {
+          font-size: 2.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-inner">
+          <nav class="nav" aria-label="Main navigation">
+            <div class="brand">UrbanBloom</div>
+            <div class="nav-links">
+              <a href="#planner">Planner</a>
+              <a href="#simulator">Simulator</a>
+              <a href="#report">Report</a>
+              <a href="#faq">FAQ</a>
+            </div>
+          </nav>
+
+          <div class="hero-copy">
+            <h1>Plan greener buildings with intelligent sustainable design.</h1>
+            <p>UrbanBloom helps architects, consultants, and planners select plant systems that match climate, structure, and budget for measurable environmental outcomes.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#planner">Start Planning</a>
+              <a class="btn btn-secondary" href="#how-it-works">How it works</a>
+            </div>
+
+            <div class="hero-chips" aria-label="Key benefits">
+              <span class="chip">AI-led building assessment</span>
+              <span class="chip">Climate-forward plant selection</span>
+              <span class="chip">Responsive planning dashboard</span>
+              <span class="chip">Accessible sustainability reports</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="section" id="why">
+        <div class="section-header">
+          <h2>Why UrbanBloom can be helpful</h2>
+          <p>Designed for professional workflows, UrbanBloom balances ecological performance, cost discipline, and architectural quality in one streamlined interface.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Data-driven green strategy</h3>
+            <p>Recommendations are generated from environmental and building parameters instead of preset templates.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Built for urban projects</h3>
+            <p>Support for facades, rooftops, terraces, and mixed-use envelopes gives every proposal a realistic deployment path.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Water-smart irrigation guidance</h3>
+            <p>Climate and rainfall inputs shape irrigation needs and maintenance expectations for each plan.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Professional output</h3>
+            <p>Exportable reports and clear metrics make stakeholder review faster and more credible.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="benefits">
+        <div class="section-header">
+          <h2>Environmental benefits from every project</h2>
+          <p>UrbanBloom helps quantify the impact of greening systems so teams can compare strategies against sustainability goals.</p>
+        </div>
+        <div class="benefit-grid feature-grid">
+          <article class="stat-card">
+            <h3>Carbon sequestration</h3>
+            <p>Vegetated facades and roofs capture carbon and support a healthier urban canopy.</p>
+          </article>
+          <article class="stat-card">
+            <h3>Cooling performance</h3>
+            <p>Plant systems lower surface temperatures and reduce demand for mechanical cooling.</p>
+          </article>
+          <article class="stat-card">
+            <h3>Stormwater management</h3>
+            <p>Growing medium and canopy cover retain rainwater before it reaches street drainage.</p>
+          </article>
+          <article class="stat-card">
+            <h3>Material compatibility</h3>
+            <p>Recommendations consider orientation, facade material and planned maintenance intensity.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <div class="section-header">
+          <h2>How it works</h2>
+          <p>UrbanBloom guides you through building data, climate context, and system selection in a single planning workflow.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Collect site inputs</h3>
+            <p>Enter location, geometry, orientation, climate and maintenance preferences for a complete environmental baseline.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Generate recommendations</h3>
+            <p>UrbanBloom analyzes climate, exposure and structure to recommend vegetation systems and plant species.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Review outcomes</h3>
+            <p>Explore projected costs, installation complexity, irrigation needs and sustainability metrics before exporting.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="supported">
+        <div class="section-header">
+          <h2>Supported building types</h2>
+          <p>UrbanBloom works with a wide range of envelopes and project typologies, from towers to low-rise residential.</p>
+        </div>
+        <div class="supported-grid feature-grid">
+          <article class="support-card">
+            <h3>Commercial towers</h3>
+            <p>Facade greening and rooftop terraces adapted for high-density office and retail environments.</p>
+          </article>
+          <article class="support-card">
+            <h3>Residential buildings</h3>
+            <p>Balcony planters, green walls and facade climbers aligned with resident-friendly maintenance.</p>
+          </article>
+          <article class="support-card">
+            <h3>Institutional campuses</h3>
+            <p>Classroom-block facades, libraries and courtyards designed for high-visibility ecological value.</p>
+          </article>
+          <article class="support-card">
+            <h3>Mixed-use sites</h3>
+            <p>Multi-program facades and roofs that balance retail, housing and public space requirements.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2>FAQ</h2>
+          <p>Answers to common questions about using UrbanBloom for sustainable building planning.</p>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h4>Does the planner use real building data?</h4>
+            <p>The tool relies on climate, orientation and material characteristics to match systems and plants from its knowledge base.</p>
+          </article>
+          <article class="faq-card">
+            <h4>Can I compare different budgets?</h4>
+            <p>Yes. Budget input affects cost guidance and preferred installation complexity, so the output stays aligned with project expectations.</p>
+          </article>
+          <article class="faq-card">
+            <h4>Are irrigation needs included?</h4>
+            <p>Yes. Rainfall, climate and plant water profiles drive irrigation recommendations and maintenance level estimates.</p>
+          </article>
+          <article class="faq-card">
+            <h4>Is there an exportable summary?</h4>
+            <p>UrbanBloom generates a clean report summary you can download as a text file for stakeholder review.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="planner">
+        <div class="section-header">
+          <h2>Planner dashboard</h2>
+          <p>Enter building and climate details to receive system-level greening recommendations and measurable impact metrics.</p>
+        </div>
+        <div class="planner-grid">
+          <aside class="sidebar">
+            <div class="section-label">Project inputs</div>
+            <h3>Building information</h3>
+            <form id="planner-form">
+              <div class="form-group">
+                <label for="location">Building location</label>
+                <input id="location" name="location" type="text" placeholder="City, region or address" aria-label="Building location" />
+              </div>
+              <div class="form-group">
+                <label for="buildingType">Building type</label>
+                <select id="buildingType" name="buildingType" required>
+                  <option value="">Select type</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Residential">Residential</option>
+                  <option value="Institutional">Institutional</option>
+                  <option value="Mixed-use">Mixed-use</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="height">Building height (m)</label>
+                <input id="height" name="height" type="number" min="2" step="1" placeholder="e.g. 24" required />
+              </div>
+              <div class="form-group">
+                <label for="width">Building width (m)</label>
+                <input id="width" name="width" type="number" min="2" step="1" placeholder="e.g. 18" required />
+              </div>
+              <div class="form-group">
+                <label for="floors">Number of floors</label>
+                <input id="floors" name="floors" type="number" min="1" step="1" placeholder="e.g. 6" required />
+              </div>
+              <div class="form-group">
+                <label for="material">Building material</label>
+                <select id="material" name="material" required>
+                  <option value="">Select material</option>
+                  <option value="Concrete">Concrete</option>
+                  <option value="Brick">Brick</option>
+                  <option value="Glass">Glass</option>
+                  <option value="Mixed">Mixed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="orientation">Orientation</label>
+                <select id="orientation" name="orientation" required>
+                  <option value="">Select orientation</option>
+                  <option value="North">North</option>
+                  <option value="East">East</option>
+                  <option value="South">South</option>
+                  <option value="West">West</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="climate">Climate</label>
+                <select id="climate" name="climate" required>
+                  <option value="">Select climate</option>
+                  <option value="Temperate">Temperate</option>
+                  <option value="Arid">Arid</option>
+                  <option value="Tropical">Tropical</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sun">Sun exposure</label>
+                <select id="sun" name="sun" required>
+                  <option value="">Select exposure</option>
+                  <option value="Full Sun">Full Sun</option>
+                  <option value="Partial Shade">Partial Shade</option>
+                  <option value="Shade">Shade</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rainfall">Rainfall</label>
+                <input id="rainfall" name="rainfall" type="text" placeholder="e.g. moderate, low or high" />
+              </div>
+              <div class="form-group">
+                <label for="wind">Wind conditions</label>
+                <input id="wind" name="wind" type="text" placeholder="e.g. sheltered, breezy" />
+              </div>
+              <div class="form-group">
+                <label for="maintenance">Maintenance preference</label>
+                <select id="maintenance" name="maintenance" required>
+                  <option value="">Select preference</option>
+                  <option value="Low">Low</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Hands-on">Hands-on</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget">Budget (USD)</label>
+                <input id="budget" name="budget" type="number" min="0" step="500" placeholder="e.g. 25000" required />
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Generate Plan</button>
+              </div>
+            </form>
+          </aside>
+
+          <main class="panel-main">
+            <section class="recommendations" aria-labelledby="recommendations-label">
+              <div class="panel-header" id="recommendations-label">
+                <span>Recommendations</span>
+                <span>Plant species & systems</span>
+              </div>
+              <div class="recommendation-summary">
+                <p id="plan-summary">Enter building details and select Generate Plan to see tailored plant and system recommendations.</p>
+              </div>
+              <div class="recommendation-grid" id="recommendation-cards">
+                <article class="recommendation-card">
+                  <h4>Waiting for input</h4>
+                  <p>Build detail-driven recommendations from your climate, exposure and budget.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="metrics-grid" aria-label="Environmental metrics">
+              <div class="metric-box">
+                <span class="label">Estimated project cost</span>
+                <span class="value" id="cost-value">—</span>
+              </div>
+              <div class="metric-box">
+                <span class="label">Cooling impact</span>
+                <span class="value" id="cooling-value">—</span>
+              </div>
+              <div class="metric-box">
+                <span class="label">Carbon potential</span>
+                <span class="value" id="carbon-value">—</span>
+              </div>
+              <div class="metric-box">
+                <span class="label">Maintenance index</span>
+                <span class="value" id="maintenance-value">—</span>
+              </div>
+            </section>
+          </main>
+
+          <aside class="info-panel">
+            <div class="summary-card">
+              <div class="section-label">Plan overview</div>
+              <h3>Project snapshot</h3>
+              <ul class="stat-list" id="plan-details">
+                <li><strong>Vegetation system</strong><span id="system-detail">Awaiting input</span></li>
+                <li><strong>Irrigation</strong><span id="irrigation-detail">Awaiting input</span></li>
+                <li><strong>Complexity</strong><span id="complexity-detail">Awaiting input</span></li>
+                <li><strong>Suitable climate</strong><span id="climate-detail">Awaiting input</span></li>
+              </ul>
+            </div>
+            <div class="summary-card">
+              <div class="section-label">Support notes</div>
+              <h3>Project signals</h3>
+              <p id="plan-notes">Use the planner to refine recommendations by adjusting orientation, material and maintenance preference.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="simulator">
+        <div class="simulator-card">
+          <div class="section-header">
+            <h2>Mini impact simulator</h2>
+            <p>Estimate how greening more buildings scales city-level environmental benefit.</p>
+          </div>
+          <div class="range-group">
+            <label for="building-count">Number of buildings greened</label>
+            <input id="building-count" type="range" min="1" max="50" value="10" aria-label="Number of buildings greened" />
+            <div class="slider-label"><span id="building-count-label">10 buildings</span></div>
+          </div>
+          <div class="output-box" aria-live="polite">
+            <p id="sim-temp">Average city temperature reduction: —</p>
+            <p id="sim-carbon">Annual carbon absorbed: —</p>
+            <p id="sim-livability">Livability score: —</p>
+            <p id="sim-shade">Estimated green cover: —</p>
+          </div>
+          <p class="sim-note">Note: An estimation only.</p>
+        </div>
+      </section>
+
+      <section class="section" id="report">
+        <div class="report-card">
+          <div class="section-header">
+            <h2>Export a polished summary</h2>
+            <p>Download a concise plan summary for stakeholders or design-team review.</p>
+          </div>
+          <button class="btn btn-primary" id="export-report" type="button">Export Report</button>
+          <pre id="report-output">No plan generated yet.</pre>
+        </div>
+      </section>
+
+      <p class="footnote">UrbanBloom uses an internal knowledge model to match plant systems with climate and building data. If data is missing, the planner will prompt for more information.</p>
+    </div>
+
+    <script src="knowledge/knowledge-data.js"></script>
+    <script src="knowledge/impactEngine.js"></script>
+    <script>
+      // Load the impact model first and then initialize the simulator
+      loadModel().then(() => {
+        // trigger initial simulator update when model is available
+        const bc = document.getElementById('building-count');
+        if (bc) bc.dispatchEvent(new Event('input'));
+      }).catch(() => {
+        // if model fails to load, still initialize UI with fallback values
+        const bc = document.getElementById('building-count');
+        if (bc) bc.dispatchEvent(new Event('input'));
+      });
+      const knowledge = { buildings, systems, materials, plants, aiRules: ai_rules };
+      const ruleSet = knowledge.aiRules || {};
+      const plannerForm = document.getElementById('planner-form');
+      const buildingTypeSelect = document.getElementById('buildingType');
+      const materialSelect = document.getElementById('material');
+      const recommendationCards = document.getElementById('recommendation-cards');
+      const planSummary = document.getElementById('plan-summary');
+      const costValue = document.getElementById('cost-value');
+      const coolingValue = document.getElementById('cooling-value');
+      const carbonValue = document.getElementById('carbon-value');
+      const maintenanceValue = document.getElementById('maintenance-value');
+      const systemDetail = document.getElementById('system-detail');
+      const irrigationDetail = document.getElementById('irrigation-detail');
+      const complexityDetail = document.getElementById('complexity-detail');
+      const climateDetail = document.getElementById('climate-detail');
+      const planNotes = document.getElementById('plan-notes');
+      const reportOutput = document.getElementById('report-output');
+      const buildingCount = document.getElementById('building-count');
+      const buildingCountLabel = document.getElementById('building-count-label');
+      const simTemp = document.getElementById('sim-temp');
+      const simCarbon = document.getElementById('sim-carbon');
+      const simLivability = document.getElementById('sim-livability');
+      const simShade = document.getElementById('sim-shade');
+      const sections = document.querySelectorAll('.page-shell > header, .page-shell > section');
+
+      function updateSectionVisibility(entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }
+
+      const sectionObserver = new IntersectionObserver(updateSectionVisibility, {
+        root: null,
+        threshold: 0.35,
+      });
+
+      sections.forEach((section) => sectionObserver.observe(section));
+
+      function populateSelectors() {
+        buildingTypeSelect.innerHTML = '<option value="">Select type</option>' +
+          [...new Set(knowledge.buildings.map((build) => build.building_type))]
+            .sort()
+            .map((value) => `<option value="${value}">${value}</option>`)
+            .join('');
+
+        materialSelect.innerHTML = '<option value="">Select material</option>' +
+          knowledge.materials
+            .map((material) => `<option value="${material.material_name}">${material.material_name}</option>`)
+            .join('');
+      }
+
+      populateSelectors();
+
+      function normalizeText(value) {
+        return value ? value.toString().trim() : '';
+      }
+
+      function normalizeSun(sun) {
+        if (!sun) return '';
+        const value = sun.toLowerCase();
+        if (value.includes('full sun')) return 'Full Sun';
+        if (value.includes('partial')) return 'Partial Shade';
+        if (value.includes('shade')) return 'Full Shade';
+        return sun;
+      }
+
+      function normalizeClimate(climate) {
+        if (!climate) return '';
+        const value = climate.toLowerCase();
+        if (value.includes('arid') || value.includes('dry')) return 'Hot-Dry';
+        if (value.includes('tropical')) return 'Tropical';
+        if (value.includes('temperate')) return 'Temperate';
+        return climate;
+      }
+
+      function getBuildingProfile(buildingType, materialName) {
+        const exactMatch = knowledge.buildings.find((item) => item.building_type === buildingType);
+        if (exactMatch) return exactMatch;
+
+        const materialMatch = knowledge.buildings.find((item) =>
+          item.primary_materials.some((mat) => mat.toLowerCase() === materialName.toLowerCase())
+        );
+        if (materialMatch) return materialMatch;
+
+        const fallback = knowledge.buildings.find((item) =>
+          item.building_type.toLowerCase().includes(buildingType.toLowerCase().split(' ')[0])
+        );
+        return fallback || knowledge.buildings[0];
+      }
+
+      function getMaterialInfo(name) {
+        return knowledge.materials.find((item) => item.material_name === name) || null;
+      }
+
+      function compatibleMaterial(system, materialName) {
+        const normalized = materialName.toLowerCase();
+        return system.compatible_materials.some((candidate) =>
+          candidate.toLowerCase().includes(normalized) || normalized.includes(candidate.toLowerCase())
+        );
+      }
+
+      function scoreSystem(system, profile, materialInfo, maintenancePreference, budget) {
+        let score = ruleSet.scoring_model?.base_score || 50;
+        if (profile.recommended_systems.includes(system.system_name)) score += 35;
+        if (compatibleMaterial(system, materialInfo?.material_name || '')) score += 25;
+        if (system.maintenance_level === maintenancePreference) score += 20;
+        if (system.cooling_efficiency && system.cooling_efficiency.toLowerCase().includes('high')) score += 15;
+        if (system.type.toLowerCase().includes('green roof')) {
+          if (profile.green_roof_feasibility === 'High') score += 20;
+          if (profile.green_roof_feasibility === 'Low') score -= 30;
+        }
+        if (budget >= (system.load_capacity_requirement_kg_m2 || 0) * 120) score += 15;
+        if (system.installation_complexity === 'Low') score += 10;
+        return score;
+      }
+
+      function findSystems(profile, materialInfo, maintenancePreference, budget) {
+        return knowledge.systems
+          .filter((system) => {
+            if (system.type.toLowerCase().includes('green roof') && profile.load_capacity_category && profile.load_capacity_category.toLowerCase().includes('low')) return false;
+            if (system.requires_support_structure === false && materialInfo && materialInfo.self_clinging_support === false) return false;
+            if (system.type.toLowerCase().includes('green roof') && profile.green_roof_feasibility === 'Low') return false;
+            return compatibleMaterial(system, materialInfo?.material_name || '') || profile.recommended_systems.includes(system.system_name);
+          })
+          .map((system) => ({ ...system, score: scoreSystem(system, profile, materialInfo, maintenancePreference, budget) }))
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 3);
+      }
+
+      function plantSystemCompatibility(plant, system, materialInfo, climate, sun, buildingType) {
+        if (system.requires_support_structure === false && plant.self_clinging === false) return false;
+        if (plant.self_clinging && materialInfo && materialInfo.self_clinging_support === false) return false;
+
+        const plantName = plant.common_name.toLowerCase();
+        const canAttach = system.compatible_plants.some((name) => {
+          const candidate = name.toLowerCase();
+          return (
+            candidate === plantName ||
+            plantName.includes(candidate) ||
+            candidate.includes(plantName) ||
+            (plant.plant_type || '').toLowerCase().includes(candidate)
+          );
+        });
+        if (!canAttach) return false;
+
+        if (climate === 'Hot-Dry' && !['High', 'Very High'].includes(plant.drought_tolerance || '')) return false;
+        if (sun && !plant.sunlight.map((v) => v.toLowerCase()).includes(sun.toLowerCase())) return false;
+
+        const buildingMatch = plant.recommended_buildings.some((value) =>
+          value.toLowerCase().includes(buildingType.toLowerCase().split(' ')[0]) || buildingType.toLowerCase().includes(value.toLowerCase())
+        );
+        if (!buildingMatch) return false;
+
+        return true;
+      }
+
+      function scorePlant(plant, system, building, materialInfo, inputs) {
+        if (!plantSystemCompatibility(plant, system, materialInfo, inputs.climate, inputs.sun, building.building_type)) {
+          return { rejected: true, confidence: 0, reasons: ['Incompatible with system, material or environment.'] };
+        }
+
+        let score = ruleSet.scoring_model?.base_score || 50;
+        const reasons = [];
+
+        if (system.type.toLowerCase().includes('green roof') && !['High', 'Very High'].includes(building.load_capacity_category)) {
+          return { rejected: true, confidence: 0, reasons: ['Building load capacity too low for green roof.'] };
+        }
+        if (plant.self_clinging && materialInfo && !materialInfo.self_clinging_support) {
+          return { rejected: true, confidence: 0, reasons: ['Self-clinging plant not supported by chosen material.'] };
+        }
+
+        if (['High', 'Very High'].includes(building.cooling_priority) && plant.cooling_potential === 'High') {
+          score += ruleSet.soft_rules?.find((rule) => rule.id === 'S1')?.score_change || 15;
+          reasons.push('Cooling potential matches building priority.');
+        }
+
+        if (inputs.climate === 'Hot-Dry') {
+          if (['High', 'Very High'].includes(plant.drought_tolerance || '')) {
+            score += ruleSet.soft_rules?.find((rule) => rule.id === 'S2')?.score_change || 20;
+            reasons.push('Drought tolerance matches hot-dry conditions.');
+          } else {
+            score -= 12;
+            reasons.push('Drought tolerance may be weak for hot-dry climate.');
+          }
+        }
+
+        if (['Office Tower', 'Parking Garage', 'Industrial Warehouse'].includes(building.building_type) && plant.pollution_tolerance === 'High') {
+          score += ruleSet.soft_rules?.find((rule) => rule.id === 'S3')?.score_change || 10;
+          reasons.push('High pollution tolerance suits the building type.');
+        }
+
+        if (inputs.maintenance === 'Low' && plant.maintenance === 'Low') {
+          score += ruleSet.environment_rules?.find((rule) => rule.id === 'E3')?.score_change || 10;
+          reasons.push('Maintenance preference matches plant demand.');
+        }
+
+        if (plant.supports_pollinators) {
+          score += 7;
+          reasons.push('Supports pollinators and biodiversity.');
+        }
+        if (system.type.toLowerCase().includes('green roof') && ['Moderate', 'High', 'Very High'].includes((plant.stormwater_benefit || '').replace(/\s*/g, ''))) {
+          score += 10;
+          reasons.push('Good stormwater benefit for green roof.');
+        }
+        if (building.sun_exposure === 'Very High' && plant.cooling_potential === 'High') {
+          score += 8;
+          reasons.push('Plant adds cooling under intense sun exposure.');
+        }
+        if (plant.maintenance === inputs.maintenance) {
+          score += 5;
+          reasons.push('Maintenance rating aligns with user preference.');
+        }
+
+        score = Math.round(Math.max(0, Math.min(100, score)));
+        return { rejected: false, confidence: score, reasons };
+      }
+
+      function selectPlants(system, building, materialInfo, inputs) {
+        const scores = knowledge.plants
+          .map((plant) => ({ plant, ...scorePlant(plant, system, building, materialInfo, inputs) }))
+          .filter((item) => !item.rejected)
+          .sort((a, b) => b.confidence - a.confidence)
+          .slice(0, 3);
+
+        if (scores.length) return scores;
+
+        return knowledge.plants
+          .filter((plant) => plant.sunlight.map((v) => v.toLowerCase()).includes(inputs.sun.toLowerCase()))
+          .slice(0, 3)
+          .map((plant) => ({ plant, confidence: 42, reasons: ['Fallback recommendation based on sunlight exposure.'] }));
+      }
+
+      function buildPlan(inputs) {
+        const profile = getBuildingProfile(inputs.buildingType, inputs.material);
+        const materialInfo = getMaterialInfo(inputs.material);
+        const systems = findSystems(profile, materialInfo, inputs.maintenance, inputs.budget);
+
+        const systemOptions = systems.map((system) => {
+          const plants = selectPlants(system, profile, materialInfo, inputs);
+          const averageConfidence = plants.length ? plants.reduce((sum, item) => sum + item.confidence, 0) / plants.length : 0;
+          return { system, plants, averageConfidence };
+        }).sort((a, b) => b.averageConfidence - a.averageConfidence);
+
+        const selectedOption = systemOptions[0] || {
+          system: knowledge.systems[0],
+          plants: selectPlants(knowledge.systems[0], profile, materialInfo, inputs),
+          averageConfidence: 0,
+        };
+
+        const area = Math.max(80, Math.round(inputs.width * inputs.height));
+        const costRate = selectedOption.system.cost_level === 'High' ? 180 : selectedOption.system.cost_level === 'Medium' ? 130 : 100;
+        const carbonFactor = selectedOption.system.cooling_efficiency?.toLowerCase().includes('very high') ? 1.5 : selectedOption.system.cooling_efficiency?.toLowerCase().includes('high') ? 1.2 : 1.0;
+
+        return {
+          location: inputs.location || 'Unspecified location',
+          buildingType: profile.building_type,
+          area,
+          selectedSystem: selectedOption.system,
+          plants: selectedOption.plants,
+          irrigation: selectedOption.system.irrigation_needed,
+          complexity: selectedOption.system.installation_complexity,
+          climate: inputs.climate,
+          cooling: selectedOption.system.cooling_efficiency || 'Medium',
+          carbon: `${Math.round(area * carbonFactor * 0.18)} kg/year`,
+          waterRetention: `${selectedOption.system.stormwater_management || 'Moderate'}`,
+          cost: `$${Math.round(area * costRate)}`,
+          maintenance: `${inputs.maintenance} / ${selectedOption.system.maintenance_level}`,
+          notes: `Selected with rule-based scoring from ai_rules.json, tailored to building, material, and climate.`,
+        };
+      }
+
+      function renderPlan(plan) {
+        planSummary.textContent = `Primary system: ${plan.selectedSystem.system_name}. This recommendation is driven by material compatibility, structural constraints, and climate performance.`;
+        costValue.textContent = plan.cost;
+        coolingValue.textContent = plan.cooling;
+        carbonValue.textContent = plan.carbon;
+        maintenanceValue.textContent = plan.maintenance;
+
+        systemDetail.textContent = `${plan.selectedSystem.system_name} (${plan.selectedSystem.type})`;
+        irrigationDetail.textContent = plan.irrigation;
+        complexityDetail.textContent = plan.complexity;
+        climateDetail.textContent = plan.climate;
+        planNotes.textContent = plan.notes;
+
+        recommendationCards.innerHTML = plan.plants
+          .map((item, index) => {
+            const plant = item.plant;
+            const reasons = item.reasons?.length ? item.reasons : ['Selected because plant traits match system + building conditions.'];
+            return `
+            <article class="recommendation-card">
+              <div class="recommendation-card-header">
+                <div>
+                  <h4>${plant.common_name}</h4>
+                  <p class="scientific-name">${plant.scientific_name}</p>
+                </div>
+                <span class="confidence-pill" aria-label="Confidence score ${item.confidence} percent">${item.confidence}% confidence</span>
+              </div>
+              <ul class="plant-stats-grid">
+                <li><strong>System</strong><span>${plan.selectedSystem.system_name}</span></li>
+                <li><strong>Climate</strong><span>${plan.climate}</span></li>
+                <li><strong>Water</strong><span>${plant.water_requirements || 'Moderate'}</span></li>
+                <li><strong>Growth</strong><span>${plant.growth_rate || 'Moderate'}</span></li>
+                <li><strong>Maintenance</strong><span>${plant.maintenance || 'Medium'}</span></li>
+              </ul>
+              <button type="button" class="details-toggle" data-index="${index}" aria-expanded="false">View more details</button>
+              <div class="detail-panel" id="detail-panel-${index}" aria-hidden="true">
+                <ul class="reasons">
+                  ${reasons.map((reason) => `<li>${reason}</li>`).join('')}
+                </ul>
+                <ul class="reasons">
+                  <li><strong>Sun exposure</strong>: ${plant.sunlight.join(', ')}</li>
+                  <li><strong>System fit</strong>: ${plan.selectedSystem.type}</li>
+                </ul>
+              </div>
+            </article>
+          `;
+          })
+          .join('');
+
+        document.querySelectorAll('.details-toggle').forEach((button) => {
+          button.addEventListener('click', () => {
+            const panel = document.getElementById(`detail-panel-${button.dataset.index}`);
+            const isOpen = !panel.classList.contains('open');
+            panel.classList.toggle('open', isOpen);
+            panel.setAttribute('aria-hidden', String(!isOpen));
+            button.setAttribute('aria-expanded', String(isOpen));
+            button.textContent = isOpen ? 'Hide details' : 'View more details';
+          });
+        });
+
+        reportOutput.textContent = [
+          'UrbanBloom Plan Summary',
+          '=========================',
+          `Location: ${plan.location}`,
+          `Building type: ${plan.buildingType}`,
+          `Area estimate: ${plan.area} m²`,
+          `Selected system: ${plan.selectedSystem.system_name}`,
+          `System type: ${plan.selectedSystem.type}`,
+          `Irrigation: ${plan.irrigation}`,
+          `Complexity: ${plan.complexity}`,
+          `Cost estimate: ${plan.cost}`,
+          `Climate: ${plan.climate}`,
+          '',
+          'Recommended plants:',
+          ...plan.plants.map((item, index) => `  ${index + 1}. ${item.plant.common_name} (${item.plant.scientific_name}) — ${item.confidence}% confidence`),
+          '',
+          'Environmental benefits:',
+          `  • Cooling impact: ${plan.cooling}`,
+          `  • Carbon storage: ${plan.carbon}`,
+          `  • Stormwater retention: ${plan.waterRetention}`,
+          '',
+          'Notes:',
+          `  ${plan.notes}`,
+        ].join('\n');
+      }
+
+      function showValidationError(message) {
+        planSummary.textContent = message;
+        recommendationCards.innerHTML = `<article class="recommendation-card"><h4>Complete the form</h4><p>${message}</p></article>`;
+      }
+
+      plannerForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(plannerForm);
+        const inputs = {
+          location: normalizeText(formData.get('location')),
+          buildingType: formData.get('buildingType'),
+          height: Number(formData.get('height')),
+          width: Number(formData.get('width')),
+          floors: Number(formData.get('floors')),
+          material: formData.get('material'),
+          orientation: formData.get('orientation'),
+          climate: normalizeClimate(formData.get('climate')),
+          sun: normalizeSun(formData.get('sun')),
+          rainfall: normalizeText(formData.get('rainfall')) || 'Moderate',
+          wind: normalizeText(formData.get('wind')) || 'Moderate',
+          maintenance: formData.get('maintenance'),
+          budget: Number(formData.get('budget')),
+        };
+
+        if (!inputs.location || !inputs.buildingType || !inputs.height || !inputs.width || !inputs.floors || !inputs.material || !inputs.orientation || !inputs.climate || !inputs.sun || !inputs.maintenance || !inputs.budget) {
+          showValidationError('Please complete all required project inputs before generating your plan.');
+          return;
+        }
+
+        const plan = buildPlan(inputs);
+        renderPlan(plan);
+      });
+
+
+      buildingCount.addEventListener('input', (event) => {
+        const count = Number(event.target.value);
+        buildingCountLabel.textContent = `${count} buildings`;
+        try {
+          if (typeof calculateImpact === 'function') {
+            const impact = calculateImpact(count);
+            simTemp.textContent = `Average city temperature reduction: ${impact.temperature_reduction.toFixed(2)}°C`;
+            simCarbon.textContent = `Annual carbon absorbed: ${impact.carbon_absorption.toFixed(2)} t`;
+            simLivability.textContent = `Livability score: ${impact.livability_score.toFixed(0)}/100`;
+            simShade.textContent = `Estimated green cover: ${impact.green_cover.toFixed(0)}%`;
+            return;
+          }
+        } catch (err) {
+          // model not ready or calculateImpact failed - fall through to heuristic
+          console.warn('calculateImpact error, falling back to heuristic', err);
+        }
+
+        // Fallback heuristic values
+        const tempDelta = Math.max(0.5, Math.min(4.0, count * 0.08));
+        const carbon = (count * 1.3).toFixed(1);
+        const livability = Math.min(98, 62 + count * 0.72);
+        const shade = Math.min(90, 10 + count * 1.4);
+        simTemp.textContent = `Average city temperature reduction: ${tempDelta.toFixed(1)}°C`;
+        simCarbon.textContent = `Annual carbon absorbed: ${carbon} t`;
+        simLivability.textContent = `Livability score: ${livability.toFixed(0)}/100`;
+        simShade.textContent = `Estimated green cover: ${shade.toFixed(0)}%`;
+      });
+
+      document.getElementById('export-report').addEventListener('click', () => {
+        const content = reportOutput.textContent;
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'urbanbloom-plan.txt';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      });
+    </script>
+  </body>
+</html>
