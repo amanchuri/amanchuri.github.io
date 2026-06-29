@@ -1,0 +1,31 @@
+{
+  "temperature_reduction": {
+    "type": "exponential_decay",
+    "base_value": 0.8,
+    "rate": 0.03
+  },
+
+  "carbon_absorption": {
+    "type": "linear",
+    "per_building": 0.013,
+    "unit": "tons_per_year"
+  },
+
+  "green_cover": {
+    "type": "linear_capped",
+    "per_building": 0.12,
+    "max": 60,
+    "base": 0
+  },
+
+  "livability_score": {
+    "type": "composite",
+    "base": 50,
+    "weights": {
+      "buildings": 0.2,
+      "green_cover": 0.3,
+      "temperature_reduction": 15
+    },
+    "clamp": [0, 100]
+  }
+}

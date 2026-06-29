@@ -1,0 +1,720 @@
+[
+  {
+    "id": 1,
+    "common_name": "Boston Ivy",
+    "scientific_name": "Parthenocissus tricuspidata",
+    "family": "Vitaceae",
+    "plant_type": "Deciduous climber",
+    "native_region": [
+      "China",
+      "Japan"
+    ],
+    "usda_hardiness_zones": "4-8",
+    "sunlight": [
+      "Full Sun",
+      "Partial Shade",
+      "Full Shade"
+    ],
+    "soil": [
+      "Loam",
+      "Clay",
+      "Sand",
+      "Chalk"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Alkaline"
+    ],
+    "water_requirements": "Moderate",
+    "drainage": "Moist but well-drained",
+    "growth_rate": "Fast",
+    "mature_height_m": "12+",
+    "mature_spread_m": "8+",
+    "time_to_maturity": "5-10 years",
+    "evergreen": false,
+    "maintenance": "Low",
+    "flowering": true,
+    "flower_color": "Green",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Blue-Black",
+      "bird_friendly": true,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": true,
+    "drought_tolerance": "Moderate",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "High",
+    "salt_tolerance": "Moderate",
+    "urban_suitability": "Excellent",
+    "green_facade": true,
+    "living_wall": false,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": true,
+    "cooling_potential": "High",
+    "air_quality_benefit": "Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Moderate",
+    "maintenance_tasks": [
+      "Annual pruning",
+      "Remove unwanted shoots",
+      "Inspect attachment points"
+    ],
+    "warnings": [
+      "Adhesive pads may leave residue on masonry.",
+      "Berries contain oxalic acid and are harmful if eaten.",
+      "Sap may irritate skin."
+    ],
+    "recommended_buildings": [
+      "Office",
+      "Apartment",
+      "School",
+      "University",
+      "Parking Garage",
+      "Warehouse"
+    ],
+    "notes": "A vigorous self-clinging climber widely used to green walls. Brilliant red and purple autumn foliage. Excellent for quickly covering large masonry surfaces."
+  },
+  {
+    "id": 2,
+    "common_name": "Virginia Creeper",
+    "scientific_name": "Parthenocissus quinquefolia",
+    "family": "Vitaceae",
+    "plant_type": "Deciduous climber",
+    "native_region": [
+      "Eastern Canada",
+      "Eastern United States",
+      "Central United States",
+      "Eastern Mexico"
+    ],
+    "usda_hardiness_zones": "3-9",
+    "sunlight": [
+      "Full Sun",
+      "Partial Shade",
+      "Full Shade"
+    ],
+    "soil": [
+      "Loam",
+      "Clay",
+      "Sand"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Alkaline"
+    ],
+    "water_requirements": "Moderate",
+    "drainage": "Moist but well-drained",
+    "growth_rate": "Fast",
+    "mature_height_m": "15-20",
+    "mature_spread_m": "5-10",
+    "time_to_maturity": "5-10 years",
+    "evergreen": false,
+    "maintenance": "Low",
+    "flowering": true,
+    "flower_color": "Greenish White",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Dark Blue",
+      "bird_friendly": true,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": true,
+    "drought_tolerance": "High",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "High",
+    "salt_tolerance": "Moderate",
+    "urban_suitability": "Excellent",
+    "green_facade": true,
+    "living_wall": false,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": true,
+    "cooling_potential": "High",
+    "air_quality_benefit": "Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Moderate",
+    "maintenance_tasks": [
+      "Annual pruning",
+      "Control vigorous growth",
+      "Remove unwanted stems"
+    ],
+    "warnings": [
+      "Can spread aggressively if not managed.",
+      "Berries contain oxalic acid and are toxic to humans but valuable to birds.",
+      "Adhesive pads may mark painted or delicate surfaces."
+    ],
+    "recommended_buildings": [
+      "Office",
+      "Apartment",
+      "School",
+      "University",
+      "Parking Garage",
+      "Warehouse",
+      "Industrial Buildings"
+    ],
+    "notes": "A vigorous North American native vine valued for rapid wall coverage, brilliant red autumn foliage, and exceptional wildlife habitat. Frequently used on green facades and trellis systems due to its adaptability and tolerance of urban conditions."
+  },
+  {
+    "id": 3,
+    "common_name": "English Ivy",
+    "scientific_name": "Hedera helix",
+    "family": "Araliaceae",
+    "plant_type": "Evergreen climber",
+    "native_region": [
+      "Europe",
+      "Western Asia"
+    ],
+    "usda_hardiness_zones": "4-9",
+    "sunlight": [
+      "Full Shade",
+      "Partial Shade",
+      "Full Sun"
+    ],
+    "soil": [
+      "Loam",
+      "Clay",
+      "Sand",
+      "Chalk"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Alkaline"
+    ],
+    "water_requirements": "Moderate",
+    "drainage": "Moist but well-drained",
+    "growth_rate": "Fast",
+    "mature_height_m": "20-30",
+    "mature_spread_m": "5-15",
+    "time_to_maturity": "5-10 years",
+    "evergreen": true,
+    "maintenance": "Medium",
+    "flowering": true,
+    "flower_color": "Greenish Yellow",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Black",
+      "bird_friendly": true,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": true,
+    "drought_tolerance": "Moderate",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "High",
+    "salt_tolerance": "Moderate",
+    "urban_suitability": "Excellent",
+    "green_facade": true,
+    "living_wall": false,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": true,
+    "cooling_potential": "High",
+    "air_quality_benefit": "Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Moderate",
+    "maintenance_tasks": [
+      "Prune regularly to control spread",
+      "Remove growth from roofs, gutters, and windows",
+      "Monitor for structural issues on older buildings"
+    ],
+    "warnings": [
+      "Considered invasive in many regions outside its native range.",
+      "Can damage weakened mortar or deteriorating masonry via aerial rootlets.",
+      "Berries and leaves are toxic if ingested.",
+      "Do not recommend for historic buildings or sensitive ecosystems."
+    ],
+    "recommended_buildings": [
+      "Office",
+      "Apartment",
+      "School",
+      "University",
+      "Parking Garage"
+    ],
+    "notes": "A dense evergreen climber valued for year-round coverage, shading, and wildlife habitat in its native range. UrbanBloom should check local regulations before recommending this species because it is invasive in many parts of the world."
+  },
+  {
+    "id": 4,
+    "common_name": "Climbing Hydrangea",
+    "scientific_name": "Hydrangea anomala subsp. petiolaris",
+    "family": "Hydrangeaceae",
+    "plant_type": "Deciduous climbing shrub",
+    "native_region": [
+      "East Asia"
+    ],
+    "usda_hardiness_zones": "4-8",
+    "sunlight": [
+      "Partial Shade",
+      "Full Shade",
+      "Morning Sun"
+    ],
+    "soil": [
+      "Loam",
+      "Clay",
+      "Rich Organic Soil"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Slightly Alkaline"
+    ],
+    "water_requirements": "Moderate to High",
+    "drainage": "Moist but well-drained",
+    "growth_rate": "Slow to Moderate",
+    "mature_height_m": "10-15",
+    "mature_spread_m": "3-6",
+    "time_to_maturity": "5-7 years",
+    "evergreen": false,
+    "maintenance": "Low",
+    "flowering": true,
+    "flower_color": "White",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Brown",
+      "bird_friendly": false,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": false,
+    "drought_tolerance": "Low",
+    "pollution_tolerance": "Moderate",
+    "wind_tolerance": "Moderate",
+    "salt_tolerance": "Low",
+    "urban_suitability": "Good",
+    "green_facade": true,
+    "living_wall": false,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": true,
+    "cooling_potential": "Moderate",
+    "air_quality_benefit": "Low to Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Low to Moderate",
+    "maintenance_tasks": [
+      "Minimal pruning after flowering",
+      "Ensure soil stays consistently moist",
+      "Remove dead or weak stems",
+      "Support young plants until self-clinging develops"
+    ],
+    "warnings": [
+      "Slow to establish compared to other climbers.",
+      "Can struggle in hot, dry urban walls without irrigation.",
+      "Needs strong support during early growth stages.",
+      "Flowering delay of several years is common."
+    ],
+    "recommended_buildings": [
+      "Residential Homes",
+      "Schools",
+      "Office Buildings",
+      "Courtyards",
+      "Hospitals"
+    ],
+    "notes": "A shade-tolerant, self-clinging climber valued for its large white lace-cap flowers and ability to green north-facing or low-light building facades where other vines fail."
+  },
+  {
+    "id": 5,
+    "common_name": "Trumpet Vine",
+    "scientific_name": "Campsis radicans",
+    "family": "Bignoniaceae",
+    "plant_type": "Deciduous woody climbing vine",
+    "native_region": [
+      "Eastern United States"
+    ],
+    "usda_hardiness_zones": "4-9",
+    "sunlight": [
+      "Full Sun",
+      "Partial Shade"
+    ],
+    "soil": [
+      "Loam",
+      "Sand",
+      "Clay"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Alkaline"
+    ],
+    "water_requirements": "Low to Moderate",
+    "drainage": "Well-drained",
+    "growth_rate": "Very Fast",
+    "mature_height_m": "10-12",
+    "mature_spread_m": "4-8",
+    "time_to_maturity": "2-4 years",
+    "evergreen": false,
+    "maintenance": "High",
+    "flowering": true,
+    "flower_color": "Orange to Red",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Brown",
+      "bird_friendly": true,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": true,
+    "drought_tolerance": "High",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "High",
+    "salt_tolerance": "Moderate",
+    "urban_suitability": "Good",
+    "green_facade": true,
+    "living_wall": false,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": true,
+    "cooling_potential": "High",
+    "air_quality_benefit": "Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Moderate",
+    "maintenance_tasks": [
+      "Aggressive pruning required to control spread",
+      "Remove suckers regularly from base and nearby areas",
+      "Train main vines early to desired structure",
+      "Clean up fallen seed pods"
+    ],
+    "warnings": [
+      "Highly aggressive spreader; can become invasive in some regions.",
+      "Can damage paint, mortar, and wooden structures if unmanaged via aerial rootlets.",
+      "Produces suckers that spread far from main plant.",
+      "Not suitable for small or delicate building facades."
+    ],
+    "recommended_buildings": [
+      "Warehouses",
+      "Parking Structures",
+      "Large Commercial Buildings",
+      "Industrial Sites",
+      "Sound Barriers"
+    ],
+    "notes": "A high-impact flowering climber with strong visual appeal and excellent heat tolerance. Best used in controlled environments due to its aggressive growth habit."
+  },
+  {
+    "id": 6,
+    "common_name": "White Stonecrop",
+    "scientific_name": "Sedum album",
+    "family": "Crassulaceae",
+    "plant_type": "Evergreen succulent groundcover",
+    "native_region": [
+      "Europe",
+      "Northern Africa",
+      "Western Asia"
+    ],
+    "usda_hardiness_zones": "3-8",
+    "sunlight": [
+      "Full Sun",
+      "Partial Shade"
+    ],
+    "soil": [
+      "Sandy",
+      "Gravelly",
+      "Poor Nutrient Soil",
+      "Loam"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Alkaline"
+    ],
+    "water_requirements": "Very Low",
+    "drainage": "Excellent (dry conditions preferred)",
+    "growth_rate": "Moderate",
+    "mature_height_m": "0.05-0.1",
+    "mature_spread_m": "0.3-0.6",
+    "time_to_maturity": "1-2 years",
+    "evergreen": true,
+    "maintenance": "Very Low",
+    "flowering": true,
+    "flower_color": "White to Pale Pink",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Brown",
+      "bird_friendly": false,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": false,
+    "drought_tolerance": "Very High",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "High",
+    "salt_tolerance": "High",
+    "urban_suitability": "Excellent",
+    "green_facade": false,
+    "living_wall": true,
+    "green_roof": true,
+    "trellis_compatible": false,
+    "self_clinging": false,
+    "cooling_potential": "High (roof insulation effect)",
+    "air_quality_benefit": "Low to Moderate",
+    "noise_reduction": "Low",
+    "stormwater_benefit": "High",
+    "carbon_storage": "Low",
+    "maintenance_tasks": [
+      "Occasional weeding to prevent invasive species takeover",
+      "Inspect roof mats annually",
+      "Remove dead patches if overcrowded",
+      "Minimal irrigation only during establishment period"
+    ],
+    "warnings": [
+      "Can be outcompeted by taller vegetation if not managed.",
+      "Requires proper roof waterproofing and drainage layers.",
+      "Not suitable for shaded or heavily shaded roofs.",
+      "Poor performance in waterlogged conditions."
+    ],
+    "recommended_buildings": [
+      "Residential Homes",
+      "Office Buildings",
+      "Schools",
+      "Warehouses",
+      "Eco-Friendly Commercial Buildings"
+    ],
+    "notes": "A foundational green roof species used in extensive green roof systems due to its extreme drought tolerance, low maintenance requirements, and ability to stabilize roof substrates while improving thermal insulation."
+  },
+  {
+    "id": 7,
+    "common_name": "Star Jasmine",
+    "scientific_name": "Trachelospermum jasminoides",
+    "family": "Apocynaceae",
+    "plant_type": "Evergreen woody vine / climbing shrub",
+    "native_region": [
+      "East Asia",
+      "Southeast Asia"
+    ],
+    "usda_hardiness_zones": "8-11",
+    "sunlight": [
+      "Full Sun",
+      "Partial Shade"
+    ],
+    "soil": [
+      "Loam",
+      "Sand",
+      "Clay"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Slightly Alkaline"
+    ],
+    "water_requirements": "Low to Moderate",
+    "drainage": "Well-drained",
+    "growth_rate": "Moderate",
+    "mature_height_m": "4-12",
+    "mature_spread_m": "2-6",
+    "time_to_maturity": "3-5 years",
+    "evergreen": true,
+    "maintenance": "Low",
+    "flowering": true,
+    "flower_color": "White",
+    "flower_fragrance": "Strong sweet scent",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Brown",
+      "bird_friendly": false,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": false,
+    "drought_tolerance": "Moderate",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "Moderate",
+    "salt_tolerance": "Moderate",
+    "urban_suitability": "Excellent",
+    "green_facade": true,
+    "living_wall": true,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": false,
+    "cooling_potential": "Moderate to High",
+    "air_quality_benefit": "Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Moderate",
+    "maintenance_tasks": [
+      "Train vines on trellis or support structure",
+      "Light pruning after flowering",
+      "Remove stray shoots from building edges",
+      "Water during prolonged drought in establishment phase"
+    ],
+    "warnings": [
+      "Not self-clinging; requires support structure.",
+      "Can become dense and heavy over time if unpruned.",
+      "Late frosts can damage new growth in marginal climates.",
+      "Milky sap may irritate skin in some individuals."
+    ],
+    "recommended_buildings": [
+      "Residential Homes",
+      "Apartments",
+      "Courtyards",
+      "Schools",
+      "Office Entrances"
+    ],
+    "notes": "A highly valued ornamental climber used in warm urban climates for façade greening due to its evergreen coverage, strong fragrance, and low maintenance once established. Requires structural support rather than self-clinging."
+  },
+  {
+    "id": 8,
+    "common_name": "Clematis",
+    "scientific_name": "Clematis spp. (e.g., Clematis viticella hybrids)",
+    "family": "Ranunculaceae",
+    "plant_type": "Deciduous flowering climbing vine",
+    "native_region": [
+      "Europe",
+      "Asia"
+    ],
+    "usda_hardiness_zones": "4-9",
+    "sunlight": [
+      "Full Sun (flowers best)",
+      "Partial Shade (roots shaded preferred)"
+    ],
+    "soil": [
+      "Loam",
+      "Sandy Loam",
+      "Rich Organic Soil"
+    ],
+    "soil_ph": [
+      "Neutral",
+      "Slightly Acid",
+      "Slightly Alkaline"
+    ],
+    "water_requirements": "Moderate",
+    "drainage": "Well-drained but moist",
+    "growth_rate": "Moderate",
+    "mature_height_m": "2-5",
+    "mature_spread_m": "1-3",
+    "time_to_maturity": "2-4 years",
+    "evergreen": false,
+    "maintenance": "Medium",
+    "flowering": true,
+    "flower_color": "Purple, Pink, White, Blue (varies by cultivar)",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Silver-Grey",
+      "bird_friendly": true,
+      "human_edible": false
+    },
+    "supports_pollinators": true,
+    "supports_birds": true,
+    "drought_tolerance": "Low to Moderate",
+    "pollution_tolerance": "Moderate",
+    "wind_tolerance": "Moderate",
+    "salt_tolerance": "Low",
+    "urban_suitability": "Good",
+    "green_facade": true,
+    "living_wall": true,
+    "green_roof": false,
+    "trellis_compatible": true,
+    "self_clinging": false,
+    "cooling_potential": "Moderate",
+    "air_quality_benefit": "Low to Moderate",
+    "noise_reduction": "Moderate",
+    "stormwater_benefit": "Low",
+    "carbon_storage": "Low to Moderate",
+    "maintenance_tasks": [
+      "Provide trellis or wire support for climbing",
+      "Prune depending on cultivar group (light or hard prune)",
+      "Keep roots shaded and cool with mulch or low plants",
+      "Remove dead stems in early spring"
+    ],
+    "warnings": [
+      "Requires proper pruning group knowledge (can be confusing for beginners).",
+      "Does not self-clinging; must be trained on support structures via twisting petioles.",
+      "Sensitive to drought stress during establishment.",
+      "Some species can become woody and tangled if neglected."
+    ],
+    "recommended_buildings": [
+      "Residential Homes",
+      "Apartments",
+      "Courtyards",
+      "Schools",
+      "Garden Walls"
+    ],
+    "notes": "A highly ornamental flowering climber used in urban greening systems for decorative façade enhancement. Best performance occurs when roots are shaded and vines receive adequate sun exposure on upper structures."
+  },
+  {
+    "id": 9,
+    "common_name": "Blue Fescue",
+    "scientific_name": "Festuca glauca",
+    "family": "Poaceae",
+    "plant_type": "Evergreen ornamental grass",
+    "native_region": [
+      "Europe"
+    ],
+    "usda_hardiness_zones": "4-8",
+    "sunlight": [
+      "Full Sun",
+      "Partial Shade"
+    ],
+    "soil": [
+      "Sandy",
+      "Loam",
+      "Gravelly Soil",
+      "Poor Nutrient Soil"
+    ],
+    "soil_ph": [
+      "Acid",
+      "Neutral",
+      "Alkaline"
+    ],
+    "water_requirements": "Low",
+    "drainage": "Excellent (dry preferred)",
+    "growth_rate": "Moderate",
+    "mature_height_m": "0.2-0.4",
+    "mature_spread_m": "0.2-0.4",
+    "time_to_maturity": "1-2 years",
+    "evergreen": true,
+    "maintenance": "Very Low",
+    "flowering": true,
+    "flower_color": "Tan to light brown seed heads",
+    "fruit": {
+      "produces_fruit": true,
+      "fruit_color": "Grain/Caryopsis (Tan)",
+      "bird_friendly": true,
+      "human_edible": false
+    },
+    "supports_pollinators": false,
+    "supports_birds": true,
+    "drought_tolerance": "High",
+    "pollution_tolerance": "High",
+    "wind_tolerance": "High",
+    "salt_tolerance": "Moderate to High",
+    "urban_suitability": "Excellent",
+    "green_facade": false,
+    "living_wall": true,
+    "green_roof": true,
+    "trellis_compatible": false,
+    "self_clinging": false,
+    "cooling_potential": "Moderate to High",
+    "air_quality_benefit": "Low to Moderate",
+    "noise_reduction": "Low",
+    "stormwater_benefit": "Moderate",
+    "carbon_storage": "Low",
+    "maintenance_tasks": [
+      "Trim dead foliage in early spring",
+      "Divide clumps every few years to maintain vigor",
+      "Remove thatch buildup if center dies out",
+      "Minimal irrigation after establishment"
+    ],
+    "warnings": [
+      "Can decline in very humid or poorly drained soils.",
+      "May die out in the center if not divided periodically.",
+      "Not suitable for heavily shaded environments.",
+      "Performance decreases in overly rich soils."
+    ],
+    "recommended_buildings": [
+      "Residential Homes",
+      "Office Rooftops",
+      "Schools",
+      "Parking Structures",
+      "Urban Green Roof Systems"
+    ],
+    "notes": "A drought-tolerant ornamental grass commonly used in extensive green roof systems and urban xeriscaping. Provides year-round visual texture and supports low-maintenance sustainable landscaping designs."
+  }
+]

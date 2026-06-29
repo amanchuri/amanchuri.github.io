@@ -1,0 +1,120 @@
+{
+  "system_name": "Urban Green Infrastructure Decision Engine",
+  "version": "2.0",
+
+  "scoring_model": {
+    "base_score": 75,
+    "min_score": 60,
+    "max_score": 98,
+    "final_formula": "base + bonuses - penalties"
+  },
+
+  "priority_levels": {
+    "high": 3,
+    "medium": 2,
+    "low": 1
+  },
+
+  "hard_constraints": [
+    {
+      "id": "H1",
+      "name": "Structural Load Compatibility",
+      "condition": "system.type == 'Green Roof'",
+      "requirement": "building.load_capacity_category in ['High','Very High']",
+      "failure_action": "reject_candidate"
+    },
+    {
+      "id": "H2",
+      "name": "Self-Clinging Material Restriction",
+      "condition": "plant.self_clinging == true",
+      "requirement": "material in ['Brick','Concrete','Stone']",
+      "failure_action": "reject_candidate"
+    },
+    {
+      "id": "H3",
+      "name": "Unsupported Vine Restriction",
+      "condition": "plant.self_clinging == false",
+      "requirement": "system.requires_support_structure == true",
+      "failure_action": "reject_candidate"
+    }
+  ],
+
+  "soft_rules": [
+    {
+      "id": "S1",
+      "name": "Cooling Priority",
+      "bonus": 15
+    },
+    {
+      "id": "S2",
+      "name": "Drought Match",
+      "excellent_bonus": 12,
+      "moderate_bonus": 4,
+      "penalty": -4
+    },
+    {
+      "id": "S3",
+      "name": "Pollution Tolerance",
+      "bonus": 8
+    },
+    {
+      "id": "S4",
+      "name": "Fast Growth",
+      "bonus": 8
+    },
+    {
+      "id": "S5",
+      "name": "Material Compatibility",
+      "bonus": 6
+    },
+    {
+      "id": "S6",
+      "name": "Maintenance Preference",
+      "bonus": 6
+    },
+    {
+      "id": "S7",
+      "name": "Sunlight Match",
+      "bonus": 6
+    },
+    {
+      "id": "S8",
+      "name": "Climate Match",
+      "bonus": 4
+    }
+  ],
+
+  "system_rules": [
+    {
+      "id": "SYS1",
+      "name": "Compatible Installation System",
+      "bonus": 8
+    }
+  ],
+
+  "environment_rules": [
+    {
+      "id": "E1",
+      "name": "Wind Penalty",
+      "penalty": -4
+    },
+    {
+      "id": "E2",
+      "name": "Extreme Heat Bonus",
+      "bonus": 5
+    }
+  ],
+
+  "confidence_system": {
+    "base_score": 75,
+    "minimum_recommendation": 60,
+    "maximum_confidence": 98,
+
+    "confidence_meaning": {
+      "0-59": "Not Recommended",
+      "60-74": "Acceptable Match",
+      "75-89": "Strong Match",
+      "90-98": "Excellent Match"
+    }
+  }
+}

@@ -1,0 +1,295 @@
+[
+  {
+    "id": 1,
+    "system_name": "Self-Clinging Façade System",
+    "type": "Green Facade",
+    "structure": "Direct plant attachment to wall",
+    "compatible_plants": [
+      "Boston Ivy",
+      "Virginia Creeper",
+      "English Ivy"
+    ],
+    "compatible_materials": [
+      "Concrete",
+      "Brick",
+      "Stone Masonry"
+    ],
+    "requires_support_structure": false,
+    "irrigation_needed": "Low (after establishment)",
+    "load_capacity_requirement_kg_m2": 0,
+    "installation_complexity": "Low",
+    "cost_level": "Low",
+    "maintenance_level": "Medium",
+    "cooling_efficiency": "High",
+    "air_quality_improvement": "Moderate",
+    "stormwater_management": "Low",
+    "best_use_cases": [
+      "Residential walls",
+      "Schools",
+      "Parking garages",
+      "Large masonry buildings"
+    ],
+    "limitations": [
+      "Only works on rough surfaces",
+      "Can damage weak or old mortar over time",
+      "Not suitable for glass or metal surfaces"
+    ],
+    "notes": "Plants attach directly using rootlets or adhesive pads, forming a natural insulation layer."
+  },
+  {
+    "id": 2,
+    "system_name": "Trellis Support System",
+    "type": "Green Façade",
+    "structure": "Metal or wooden framework attached to building",
+    "compatible_plants": [
+      "Clematis",
+      "Star Jasmine",
+      "Trumpet Vine",
+      "Climbing Hydrangea"
+    ],
+    "compatible_materials": [
+      "Concrete",
+      "Brick",
+      "Glass (with frame)",
+      "Steel"
+    ],
+    "requires_support_structure": true,
+    "irrigation_needed": "Low to Moderate",
+    "load_capacity_requirement_kg_m2": 50,
+    "installation_complexity": "Medium",
+    "cost_level": "Medium",
+    "maintenance_level": "Medium",
+    "cooling_efficiency": "High",
+    "air_quality_improvement": "Moderate",
+    "stormwater_management": "Low",
+    "best_use_cases": [
+      "Office buildings",
+      "Residential façades",
+      "Courtyards",
+      "Urban plazas"
+    ],
+    "limitations": [
+      "Requires structural installation",
+      "Plants need training and pruning",
+      "Wind exposure can affect growth"
+    ],
+    "notes": "Used when plants cannot self-attach; allows controlled vertical greening on any surface."
+  },
+  {
+    "id": 3,
+    "system_name": "Extensive Green Roof System",
+    "type": "Green Roof",
+    "structure": "Shallow soil substrate layer (5–15 cm)",
+    "compatible_plants": [
+      "Sedum album",
+      "Blue Fescue"
+    ],
+    "compatible_materials": [
+      "Asphalt Roof (retrofit)",
+      "Metal Roof (engineered)",
+      "Green Roof Substrate"
+    ],
+    "requires_support_structure": true,
+    "irrigation_needed": "Very Low",
+    "load_capacity_requirement_kg_m2": 60,
+    "installation_complexity": "Medium",
+    "cost_level": "Medium",
+    "maintenance_level": "Low",
+    "cooling_efficiency": "Very High",
+    "air_quality_improvement": "Low to Moderate",
+    "stormwater_management": "High",
+    "best_use_cases": [
+      "Residential rooftops",
+      "Warehouses",
+      "Schools",
+      "Eco buildings"
+    ],
+    "limitations": [
+      "Limited to shallow-root plants",
+      "Not suitable for trees or large shrubs",
+      "Drainage system required"
+    ],
+    "notes": "Lightweight green roof designed for drought-tolerant species and stormwater retention."
+  },
+  {
+    "id": 4,
+    "system_name": "Intensive Green Roof System",
+    "type": "Green Roof",
+    "structure": "Deep soil layer (15–100+ cm)",
+    "compatible_plants": [
+      "Small Trees",
+      "Shrubs",
+      "Grasses"
+    ],
+    "compatible_materials": [
+      "Concrete Roof",
+      "Steel Structure (reinforced)"
+    ],
+    "requires_support_structure": true,
+    "irrigation_needed": "Medium",
+    "load_capacity_requirement_kg_m2": 300,
+    "installation_complexity": "High",
+    "cost_level": "High",
+    "maintenance_level": "High",
+    "cooling_efficiency": "Very High",
+    "air_quality_improvement": "High",
+    "stormwater_management": "Very High",
+    "best_use_cases": [
+      "Commercial rooftops",
+      "Parks on buildings",
+      "High-end developments"
+    ],
+    "limitations": [
+      "Requires strong structural support",
+      "High installation cost",
+      "Ongoing irrigation and maintenance needed"
+    ],
+    "notes": "Functions like an elevated park ecosystem with trees and diverse vegetation."
+  },
+  {
+    "id": 5,
+    "system_name": "Living Wall Modular Panel System",
+    "type": "Vertical Green Wall",
+    "structure": "Pre-planted modular panels attached to wall",
+    "compatible_plants": [
+      "Clematis (trained sections)",
+      "Small vines",
+      "Ornamental grasses",
+      "Mixed species panels"
+    ],
+    "compatible_materials": [
+      "Concrete",
+      "Brick",
+      "Steel",
+      "Glass (with backing)"
+    ],
+    "requires_support_structure": true,
+    "irrigation_needed": "High (drip system)",
+    "load_capacity_requirement_kg_m2": 80,
+    "installation_complexity": "Very High",
+    "cost_level": "Very High",
+    "maintenance_level": "High",
+    "cooling_efficiency": "Very High",
+    "air_quality_improvement": "High",
+    "stormwater_management": "Moderate",
+    "best_use_cases": [
+      "Luxury buildings",
+      "City landmarks",
+      "Indoor atriums",
+      "Corporate offices"
+    ],
+    "limitations": [
+      "Expensive installation",
+      "Requires irrigation system",
+      "Plant replacement needed over time"
+    ],
+    "notes": "Engineered living wall system using modular vegetation panels with controlled irrigation."
+  },
+  {
+    "id": 6,
+    "system_name": "Green Curtain System",
+    "type": "Light Façade Shading",
+    "structure": "Free-hanging vines on cables or nets",
+    "compatible_plants": [
+      "Star Jasmine",
+      "Clematis",
+      "Morning glory-type vines"
+    ],
+    "compatible_materials": [
+      "Glass",
+      "Concrete",
+      "Steel"
+    ],
+    "requires_support_structure": true,
+    "irrigation_needed": "Low",
+    "load_capacity_requirement_kg_m2": 20,
+    "installation_complexity": "Low",
+    "cost_level": "Low",
+    "maintenance_level": "Low",
+    "cooling_efficiency": "High",
+    "air_quality_improvement": "Moderate",
+    "stormwater_management": "Low",
+    "best_use_cases": [
+      "Office windows",
+      "Glass façades",
+      "Sun shading systems"
+    ],
+    "limitations": [
+      "Does not cover full wall",
+      "Wind movement affects stability"
+    ],
+    "notes": "Uses hanging vegetation to reduce solar heat gain without structural wall attachment."
+  },
+  {
+    "id": 7,
+    "system_name": "Ground-Based Urban Tree System",
+    "type": "Soil-Based Urban Greening",
+    "structure": "Open soil planting pits",
+    "compatible_plants": [
+      "London Plane Tree",
+      "Street trees",
+      "Shade trees"
+    ],
+    "compatible_materials": [
+      "Urban Soil",
+      "Permeable Pavement"
+    ],
+    "requires_support_structure": false,
+    "irrigation_needed": "Medium",
+    "load_capacity_requirement_kg_m2": "N/A",
+    "installation_complexity": "Low",
+    "cost_level": "Medium",
+    "maintenance_level": "Medium",
+    "cooling_efficiency": "Very High",
+    "air_quality_improvement": "Very High",
+    "stormwater_management": "Very High",
+    "best_use_cases": [
+      "City streets",
+      "Parks",
+      "Schools",
+      "Parking lot shading"
+    ],
+    "limitations": [
+      "Requires root space",
+      "Infrastructure conflict with pavement if not designed properly"
+    ],
+    "notes": "High-impact urban cooling system using canopy trees for large-scale environmental benefits."
+  },
+  {
+    "id": 8,
+    "system_name": "Hybrid Retrofit Green System",
+    "type": "Mixed Infrastructure",
+    "structure": "Combination of trellis + substrate + modular panels",
+    "compatible_plants": [
+      "Mixed vines",
+      "Sedum layers",
+      "Ornamental climbers"
+    ],
+    "compatible_materials": [
+      "Concrete",
+      "Brick",
+      "Steel",
+      "Metal Roof"
+    ],
+    "requires_support_structure": true,
+    "irrigation_needed": "Variable",
+    "load_capacity_requirement_kg_m2": "Variable",
+    "installation_complexity": "Very High",
+    "cost_level": "Very High",
+    "maintenance_level": "High",
+    "cooling_efficiency": "Very High",
+    "air_quality_improvement": "Very High",
+    "stormwater_management": "Very High",
+    "best_use_cases": [
+      "Smart city buildings",
+      "Retrofitted skyscrapers",
+      "Climate resilience projects"
+    ],
+    "limitations": [
+      "Complex engineering required",
+      "High cost",
+      "Needs monitoring system"
+    ],
+    "notes": "Advanced system combining multiple green infrastructure types for maximum environmental performance."
+  }
+]

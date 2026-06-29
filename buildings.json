@@ -1,0 +1,293 @@
+[
+  {
+    "id": 1,
+    "building_type": "Residential Apartment",
+    "height_floors": "3-20",
+    "primary_materials": ["Brick", "Concrete", "Glass"],
+    "roof_type": "Flat or Slightly Sloped",
+    "load_capacity_category": "Medium",
+    "wind_exposure": "Medium",
+    "sun_exposure": "High",
+    "green_roof_feasibility": "Medium",
+    "green_facade_feasibility": "High",
+    "recommended_systems": [
+      "Self-Clinging Façade System",
+      "Trellis Support System",
+      "Extensive Green Roof System"
+    ],
+    "suitable_plants": [
+      "Boston Ivy",
+      "Virginia Creeper",
+      "English Ivy",
+      "Clematis",
+      "Star Jasmine",
+      "Sedum album"
+    ],
+    "constraints": [
+      "Moderate structural load limits",
+      "Shared ownership approval needed",
+      "Limited maintenance access on upper floors"
+    ],
+    "cooling_priority": "High",
+    "notes": "Best balance of facade and rooftop greening opportunities in urban environments."
+  },
+  {
+    "id": 2,
+    "building_type": "Office Tower",
+    "height_floors": "10-80",
+    "primary_materials": ["Glass", "Steel", "Concrete"],
+    "roof_type": "Flat",
+    "load_capacity_category": "High",
+    "wind_exposure": "Very High",
+    "sun_exposure": "Very High",
+    "green_roof_feasibility": "Medium",
+    "green_facade_feasibility": "Medium",
+    "recommended_systems": [
+      "Living Wall Modular Panel System",
+      "Green Curtain System",
+      "Extensive Green Roof System"
+    ],
+    "suitable_plants": [
+      "Star Jasmine",
+      "Sedum album",
+      "Blue Fescue",
+      "Mixed living wall species"
+    ],
+    "constraints": [
+      "High wind loads at height",
+      "Glass façade limits self-clinging plants",
+      "Maintenance requires access systems"
+    ],
+    "cooling_priority": "Very High",
+    "notes": "High-impact candidate for vertical greening and cooling due to heat island contribution."
+  },
+  {
+    "id": 3,
+    "building_type": "School",
+    "height_floors": "1-5",
+    "primary_materials": ["Brick", "Concrete"],
+    "roof_type": "Flat",
+    "load_capacity_category": "Medium",
+    "wind_exposure": "Low",
+    "sun_exposure": "High",
+    "green_roof_feasibility": "High",
+    "green_facade_feasibility": "High",
+    "recommended_systems": [
+      "Self-Clinging Façade System",
+      "Trellis Support System",
+      "Extensive Green Roof System"
+    ],
+    "suitable_plants": [
+      "Boston Ivy",
+      "Virginia Creeper",
+      "English Ivy",
+      "Clematis",
+      "Sedum album"
+    ],
+    "constraints": [
+      "Safety restrictions for toxic berries (plant placement required)",
+      "Moderate maintenance budget"
+    ],
+    "cooling_priority": "High",
+    "notes": "Ideal educational building for visible green infrastructure systems."
+  },
+  {
+    "id": 4,
+    "building_type": "Parking Garage",
+    "height_floors": "3-10",
+    "primary_materials": ["Concrete"],
+    "roof_type": "Flat",
+    "load_capacity_category": "High",
+    "wind_exposure": "Medium",
+    "sun_exposure": "High",
+    "green_roof_feasibility": "High",
+    "green_facade_feasibility": "Very High",
+    "recommended_systems": [
+      "Self-Clinging Façade System",
+      "Trellis Support System",
+      "Extensive Green Roof System"
+    ],
+    "suitable_plants": [
+      "Virginia Creeper",
+      "Boston Ivy",
+      "English Ivy",
+      "Sedum album"
+    ],
+    "constraints": [
+      "High exhaust pollution exposure",
+      "Harsh microclimate conditions"
+    ],
+    "cooling_priority": "Very High",
+    "notes": "One of the best candidates for façade greening due to exposed concrete surfaces."
+  },
+  {
+    "id": 5,
+    "building_type": "Industrial Warehouse",
+    "height_floors": "1-5",
+    "primary_materials": ["Metal", "Steel", "Concrete"],
+    "roof_type": "Flat Metal Roof",
+    "load_capacity_category": "Very High",
+    "wind_exposure": "High",
+    "sun_exposure": "Very High",
+    "green_roof_feasibility": "Medium",
+    "green_facade_feasibility": "Medium",
+    "recommended_systems": [
+      "Green Curtain System",
+      "Extensive Green Roof System",
+      "Hybrid Retrofit Green System"
+    ],
+    "suitable_plants": [
+      "Sedum album",
+      "Star Jasmine",
+      "Trumpet Vine"
+    ],
+    "constraints": [
+      "Heat accumulation on metal surfaces",
+      "Large surface area requires scalable systems"
+    ],
+    "cooling_priority": "Very High",
+    "notes": "High heat contributor; strong candidate for retrofit green systems."
+  },
+  {
+    "id": 6,
+    "building_type": "Residential House",
+    "height_floors": "1-3",
+    "primary_materials": ["Brick", "Wood Cladding", "Concrete"],
+    "roof_type": "Sloped",
+    "load_capacity_category": "Low to Medium",
+    "wind_exposure": "Low",
+    "sun_exposure": "Medium",
+    "green_roof_feasibility": "Low",
+    "green_facade_feasibility": "High",
+    "recommended_systems": [
+      "Self-Clinging Façade System",
+      "Trellis Support System",
+      "Green Curtain System"
+    ],
+    "suitable_plants": [
+      "English Ivy",
+      "Star Jasmine",
+      "Clematis"
+    ],
+    "constraints": [
+      "Limited roof load capacity",
+      "Small façade area"
+    ],
+    "cooling_priority": "Medium",
+    "notes": "Best suited for façade-based greening rather than full green roofs."
+  },
+  {
+    "id": 7,
+    "building_type": "Shopping Mall",
+    "height_floors": "2-8",
+    "primary_materials": ["Glass", "Concrete", "Steel"],
+    "roof_type": "Flat",
+    "load_capacity_category": "High",
+    "wind_exposure": "Medium",
+    "sun_exposure": "Very High",
+    "green_roof_feasibility": "High",
+    "green_facade_feasibility": "Medium",
+    "recommended_systems": [
+      "Living Wall Modular Panel System",
+      "Extensive Green Roof System",
+      "Green Curtain System"
+    ],
+    "suitable_plants": [
+      "Sedum album",
+      "Star Jasmine",
+      "Blue Fescue"
+    ],
+    "constraints": [
+      "Large glass surfaces increase heat gain",
+      "High public interaction areas require safety planning"
+    ],
+    "cooling_priority": "Very High",
+    "notes": "High energy use building; strong candidate for visible green infrastructure."
+  },
+  {
+    "id": 8,
+    "building_type": "Hospital",
+    "height_floors": "5-30",
+    "primary_materials": ["Concrete", "Glass"],
+    "roof_type": "Flat",
+    "load_capacity_category": "High",
+    "wind_exposure": "High",
+    "sun_exposure": "Medium",
+    "green_roof_feasibility": "High",
+    "green_facade_feasibility": "Medium",
+    "recommended_systems": [
+      "Extensive Green Roof System",
+      "Trellis Support System",
+      "Green Curtain System"
+    ],
+    "suitable_plants": [
+      "Clematis",
+      "Star Jasmine",
+      "Sedum album"
+    ],
+    "constraints": [
+      "Noise and air quality sensitivity",
+      "Strict maintenance requirements"
+    ],
+    "cooling_priority": "Very High",
+    "notes": "Improves recovery environments and reduces urban heat stress."
+  },
+  {
+    "id": 9,
+    "building_type": "University Campus Building",
+    "height_floors": "2-15",
+    "primary_materials": ["Brick", "Concrete"],
+    "roof_type": "Flat",
+    "load_capacity_category": "Medium",
+    "wind_exposure": "Low to Medium",
+    "sun_exposure": "High",
+    "green_roof_feasibility": "High",
+    "green_facade_feasibility": "High",
+    "recommended_systems": [
+      "Self-Clinging Façade System",
+      "Trellis Support System",
+      "Extensive Green Roof System"
+    ],
+    "suitable_plants": [
+      "Boston Ivy",
+      "Virginia Creeper",
+      "Clematis",
+      "Sedum album"
+    ],
+    "constraints": [
+      "Budget constraints for large-scale installations",
+      "Student safety considerations"
+    ],
+    "cooling_priority": "High",
+    "notes": "Ideal for educational demonstration of sustainable infrastructure."
+  },
+  {
+    "id": 10,
+    "building_type": "Skyscraper Mixed-Use Tower",
+    "height_floors": "40-100+",
+    "primary_materials": ["Glass", "Steel", "Concrete"],
+    "roof_type": "Flat High Load",
+    "load_capacity_category": "Very High",
+    "wind_exposure": "Extreme",
+    "sun_exposure": "Extreme",
+    "green_roof_feasibility": "Medium",
+    "green_facade_feasibility": "Medium",
+    "recommended_systems": [
+      "Living Wall Modular Panel System",
+      "Green Curtain System",
+      "Hybrid Retrofit Green System"
+    ],
+    "suitable_plants": [
+      "Sedum album",
+      "Star Jasmine",
+      "Blue Fescue"
+    ],
+    "constraints": [
+      "Extreme wind loading at height",
+      "High engineering requirements",
+      "Maintenance via mechanical systems only"
+    ],
+    "cooling_priority": "Very High",
+    "notes": "Maximum urban heat island contributor; high-impact candidate for engineered greening systems."
+  }
+]

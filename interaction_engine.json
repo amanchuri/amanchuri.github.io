@@ -1,0 +1,121 @@
+{
+  "system": "UrbanBloom Interaction Engine",
+
+  "trigger_events": {
+    "on_generate_plan": {
+      "input_source": "user_form_data",
+      "steps": [
+        "normalize_input",
+        "match_building",
+        "extract_material_constraints",
+        "select_installation_systems",
+        "filter_plants",
+        "run_ai_rules_engine",
+        "calculate_confidence_scores",
+        "rank_results",
+        "generate_explanations",
+        "generate_environmental_impacts",
+        "return_response_bundle"
+      ]
+    }
+  },
+
+  "pipeline_steps": {
+    "normalize_input": {
+      "description": "Standardize user input values to match dataset formats",
+      "outputs": "clean_user_context"
+    },
+
+    "match_building": {
+      "source": "buildings.json",
+      "method": "attribute_matching",
+      "output": "matched_building_entry"
+    },
+
+    "extract_material_constraints": {
+      "source": "materials.json",
+      "method": "lookup_by_building_materials",
+      "output": "material_profile"
+    },
+
+    "select_installation_systems": {
+      "source": "installation_systems.json",
+      "method": "rule_based_filtering",
+      "logic": [
+        "check_load_capacity",
+        "check_material_compatibility",
+        "check_climate_constraints"
+      ],
+      "output": "candidate_systems_ranked"
+    },
+
+    "filter_plants": {
+      "source": "plants.json",
+      "method": "multi_constraint_filter",
+      "logic": [
+        "climate_match",
+        "sunlight_match",
+        "water_requirements_match",
+        "self_clinging_vs_system",
+        "urban_suitability"
+      ],
+      "output": "candidate_plants_ranked"
+    },
+
+    "run_ai_rules_engine": {
+      "source": "ai_rules.json",
+      "method": "rule_evaluation_engine",
+      "logic": [
+        "apply_hard_constraints",
+        "apply_soft_scoring",
+        "apply_environmental_modifiers",
+        "apply_system_rules",
+        "resolve_conflicts"
+      ],
+      "output": "scored_candidates"
+    },
+
+    "calculate_confidence_scores": {
+      "method": "normalize_score_0_to_100",
+      "formula": "base + bonuses - penalties then apply multipliers",
+      "output": "confidence_scored_results"
+    },
+
+    "rank_results": {
+      "method": "sort_descending_by_confidence",
+      "output": "ranked_recommendations"
+    },
+
+    "generate_explanations": {
+      "method": "rule_trace_explanation",
+      "output_format": [
+        "why_selected",
+        "why_rejected_others",
+        "rule_matches_summary"
+      ]
+    },
+
+    "generate_environmental_impacts": {
+      "method": "rule_based_estimation",
+      "metrics": [
+        "cooling_effect",
+        "carbon_reduction",
+        "stormwater_retention",
+        "air_quality_improvement",
+        "noise_reduction"
+      ],
+      "output": "impact_summary"
+    },
+
+    "return_response_bundle": {
+      "output_structure": {
+        "building_analysis": true,
+        "systems": true,
+        "plants": true,
+        "confidence_scores": true,
+        "explanations": true,
+        "environmental_impacts": true
+      }
+    }
+  }
+}
